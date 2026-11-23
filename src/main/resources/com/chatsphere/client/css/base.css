@@ -1,0 +1,52 @@
+/* Base: Modena overrides, type scale, spacing utilities. No hex colours here. */
+.root {
+    -fx-font-size: 14px;
+    -fx-background-color: -cs-bg-app;
+    /* Modena derives scrollbars, popups and calendars from -fx-base: point it at our surface so they follow the theme */
+    -fx-base: -cs-surface;
+    -fx-control-inner-background: -cs-surface;
+    -fx-accent: -cs-primary;
+    -fx-focus-color: -cs-primary;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: -cs-text;
+}
+.label { -fx-text-fill: -cs-text; }
+.tooltip {
+    -fx-background-color: -cs-text;
+    -fx-text-fill: -cs-surface;
+    -fx-background-radius: 4;
+    -fx-font-size: 12px;
+    -fx-padding: 6 8;
+}
+
+/* ---- type scale (C3) ---- */
+.display       { -fx-font-size: 28px; -fx-font-weight: bold; }
+.title         { -fx-font-size: 20px; -fx-font-weight: bold; }
+.subtitle      { -fx-font-size: 16px; -fx-font-weight: bold; }
+.body          { -fx-font-size: 14px; }
+.body-strong   { -fx-font-size: 14px; -fx-font-weight: bold; }
+.message       { -fx-font-size: 14px; }
+.small         { -fx-font-size: 12px; }
+.caption       { -fx-font-size: 11px; }
+.mono          { -fx-font-size: 13px; -fx-font-family: monospace; }
+
+/* ---- text colour helpers ---- */
+.text-primary   { -fx-text-fill: -cs-text; }
+.text-secondary { -fx-text-fill: -cs-text-secondary; }
+.text-tertiary  { -fx-text-fill: -cs-text-tertiary; }
+.text-danger    { -fx-text-fill: -cs-danger; }
+.text-accent    { -fx-text-fill: -cs-accent; }
+
+/* ---- surfaces and dividers ---- */
+.surface        { -fx-background-color: -cs-surface; }
+.surface-sunken { -fx-background-color: -cs-surface-sunken; }
+.border-bottom  { -fx-border-color: transparent transparent -cs-border transparent; -fx-border-width: 0 0 1 0; }
+.border-top     { -fx-border-color: -cs-border transparent transparent transparent; -fx-border-width: 1 0 0 0; }
+.border-right   { -fx-border-color: transparent -cs-border transparent transparent; -fx-border-width: 0 1 0 0; }
+.border-left    { -fx-border-color: transparent transparent transparent -cs-border; -fx-border-width: 0 0 0 1; }
+
+/* ---- spacing utilities (space-1..7 = 4, 8, 12, 16, 24, 32, 48) ---- */
+.gap-1 { -fx-spacing: 4px; }  .gap-2 { -fx-spacing: 8px; }  .gap-3 { -fx-spacing: 12px; } .gap-4 { -fx-spacing: 16px; }
+.gap-5 { -fx-spacing: 24px; } .gap-6 { -fx-spacing: 32px; } .gap-7 { -fx-spacing: 48px; }
+.pad-1 { -fx-padding: 4px; }  .pad-2 { -fx-padding: 8px; }  .pad-3 { -fx-padding: 12px; } .pad-4 { -fx-padding: 16px; }
+.pad-5 { -fx-padding: 24px; } .pad-6 { -fx-padding: 32px; } .pad-7 { -fx-padding: 48px; }

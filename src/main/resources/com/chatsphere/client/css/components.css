@@ -1,0 +1,224 @@
+/* Shared components. Tokens only, no hex colours. */
+
+/* ---------- Avatar ---------- */
+.avatar-color-0 { -fx-fill: -cs-avatar-0; } .avatar-color-1 { -fx-fill: -cs-avatar-1; }
+.avatar-color-2 { -fx-fill: -cs-avatar-2; } .avatar-color-3 { -fx-fill: -cs-avatar-3; }
+.avatar-color-4 { -fx-fill: -cs-avatar-4; } .avatar-color-5 { -fx-fill: -cs-avatar-5; }
+.avatar-color-6 { -fx-fill: -cs-avatar-6; } .avatar-color-7 { -fx-fill: -cs-avatar-7; }
+.avatar-initial { -fx-text-fill: white; -fx-font-weight: bold; }
+
+/* ---------- Presence dot (filled = online, hollow ring = offline) ---------- */
+.presence-dot { -fx-fill: transparent; -fx-stroke: -cs-text-tertiary; -fx-stroke-width: 1.5; }
+.presence-dot.online { -fx-fill: -cs-success; -fx-stroke-width: 0; }
+/* inside an avatar: cut-out ring in the surface colour so it reads on any photo-less circle */
+.avatar .presence-dot { -fx-fill: -cs-surface; -fx-stroke: -cs-text-tertiary; -fx-stroke-width: 1.5; }
+.avatar .presence-dot.online { -fx-fill: -cs-success; -fx-stroke: -cs-surface; -fx-stroke-width: 2; }
+
+/* ---------- Unread badge (amber is for unread only) ---------- */
+.unread-badge {
+    -fx-background-color: -cs-accent;
+    -fx-background-radius: 9;
+    -fx-text-fill: -cs-on-accent;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 5 0 5;
+    -fx-min-height: 18px;
+    -fx-pref-height: 18px;
+    -fx-alignment: center;
+}
+
+/* ---------- Icon button (32x32 ghost) ---------- */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+.icon-button .ikonli-font-icon { -fx-icon-color: -cs-text-secondary; }
+.icon-button:hover { -fx-background-color: -cs-surface-hover; }
+.icon-button:hover .ikonli-font-icon { -fx-icon-color: -cs-text; }
+.icon-button:pressed { -fx-background-color: -cs-surface-hover; }
+.icon-button:focused { -fx-border-color: -cs-primary; }
+.icon-button:disabled { -fx-opacity: 1; -fx-cursor: default; -fx-background-color: transparent; }
+.icon-button:disabled .ikonli-font-icon { -fx-icon-color: -cs-text-disabled; }
+/* primary variant: e.g. the send button when sendable */
+.icon-button.primary .ikonli-font-icon { -fx-icon-color: -cs-primary; }
+.icon-button.primary:disabled .ikonli-font-icon { -fx-icon-color: -cs-text-disabled; }
+
+/* ---------- Segmented tabs ---------- */
+.segmented-tabs {
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 4;
+    -fx-padding: 2;
+    -fx-spacing: 2;
+}
+.segmented-tabs .segment {
+    -fx-background-radius: 4;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-min-height: 32px;
+    -fx-padding: 0 12 0 12;
+    -fx-cursor: hand;
+}
+.segmented-tabs .segment .label { -fx-text-fill: -cs-text-secondary; -fx-font-weight: bold; }
+.segmented-tabs .segment:hover { -fx-background-color: -cs-surface-hover; }
+.segmented-tabs .segment.selected { -fx-background-color: -cs-surface; -fx-border-color: -cs-border; }
+.segmented-tabs .segment.selected .label { -fx-text-fill: -cs-text; }
+.segmented-tabs .segment:focused { -fx-border-color: -cs-primary; -fx-border-width: 2; }
+
+/* ---------- Banner ---------- */
+.banner {
+    -fx-background-color: -cs-surface;
+    -fx-background-radius: 8;
+    -fx-border-color: -cs-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+.banner .label { -fx-text-fill: -cs-text; }
+.banner-info    { -fx-background-color: -cs-primary-subtle; -fx-border-color: -cs-primary; }
+.banner-success { -fx-border-color: -cs-success; }
+.banner-warning { -fx-border-color: -cs-warning; }
+.banner-error   { -fx-background-color: -cs-danger-subtle; -fx-border-color: -cs-danger; }
+.banner-info .ikonli-font-icon    { -fx-icon-color: -cs-primary; }
+.banner-success .ikonli-font-icon { -fx-icon-color: -cs-success; }
+.banner-warning .ikonli-font-icon { -fx-icon-color: -cs-warning; }
+.banner-error .ikonli-font-icon   { -fx-icon-color: -cs-danger; }
+/* flat full-width variant for the connection banner */
+.banner.banner-flat { -fx-background-radius: 0; -fx-border-radius: 0; -fx-border-width: 0 0 1 0; }
+.banner-action {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: -cs-primary;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-padding: 2 8 2 8;
+    -fx-min-height: 32px;
+    -fx-cursor: hand;
+}
+.banner-action:hover { -fx-background-color: -cs-surface-hover; }
+.banner-action:focused { -fx-border-color: -cs-primary; }
+
+/* ---------- Buttons (36 high, large = 40) ---------- */
+.app-button {
+    -fx-background-radius: 4;
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+    -fx-border-radius: 4;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16 0 16;
+    -fx-min-height: 36px;
+    -fx-pref-height: 36px;
+    -fx-graphic-text-gap: 8;
+    -fx-cursor: hand;
+}
+.app-button.large { -fx-min-height: 40px; -fx-pref-height: 40px; }
+
+.app-button.primary { -fx-background-color: -cs-primary; -fx-text-fill: -cs-on-primary; }
+.app-button.primary .ikonli-font-icon { -fx-icon-color: -cs-on-primary; }
+.app-button.primary:hover { -fx-background-color: -cs-primary-hover; }
+.app-button.primary:pressed { -fx-background-color: -cs-primary-pressed; }
+
+.app-button.secondary { -fx-background-color: transparent; -fx-text-fill: -cs-secondary; -fx-border-color: -cs-secondary; -fx-border-width: 1; }
+.app-button.secondary .ikonli-font-icon { -fx-icon-color: -cs-secondary; }
+.app-button.secondary:hover, .app-button.secondary:pressed { -fx-background-color: -cs-surface-hover; }
+
+.app-button.ghost { -fx-background-color: transparent; -fx-text-fill: -cs-text; }
+.app-button.ghost .ikonli-font-icon { -fx-icon-color: -cs-text-secondary; }
+.app-button.ghost:hover, .app-button.ghost:pressed { -fx-background-color: -cs-surface-hover; }
+
+.app-button.danger { -fx-background-color: -cs-danger; -fx-text-fill: -cs-on-primary; }
+.app-button.danger .ikonli-font-icon { -fx-icon-color: -cs-on-primary; }
+.app-button.danger:hover { -fx-background-color: derive(-cs-danger, -10%); }
+.app-button.danger:pressed { -fx-background-color: derive(-cs-danger, -18%); }
+
+.app-button.danger-ghost { -fx-background-color: transparent; -fx-text-fill: -cs-danger; }
+.app-button.danger-ghost .ikonli-font-icon { -fx-icon-color: -cs-danger; }
+.app-button.danger-ghost:hover, .app-button.danger-ghost:pressed { -fx-background-color: -cs-danger-subtle; }
+
+/* keyboard focus: 2px ring drawn just outside the button, never removed */
+.app-button:focused { -fx-border-color: -cs-primary; -fx-border-width: 2; -fx-border-insets: -3; -fx-border-radius: 7; }
+
+.app-button:disabled { -fx-opacity: 1; -fx-cursor: default; -fx-background-color: -cs-surface-sunken; -fx-text-fill: -cs-text-disabled; -fx-border-color: transparent; }
+.app-button:disabled .ikonli-font-icon { -fx-icon-color: -cs-text-disabled; }
+/* pending keeps its normal colours (it is not disabled) */
+.app-button.pending { -fx-cursor: default; }
+
+/* ---------- Spinner ---------- */
+.cs-spinner { -fx-progress-color: -cs-primary; }
+.app-button.primary .cs-spinner, .app-button.danger .cs-spinner { -fx-progress-color: -cs-on-primary; }
+
+/* ---------- Text inputs ---------- */
+.text-field, .password-field {
+    -fx-background-color: -cs-surface;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-border-color: -cs-border-strong;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-text-fill: -cs-text;
+    -fx-prompt-text-fill: -cs-text-tertiary;
+    -fx-highlight-fill: -cs-primary;
+    -fx-highlight-text-fill: -cs-on-primary;
+    -fx-min-height: 36px;
+    -fx-pref-height: 36px;
+    -fx-padding: 0 12 0 12;
+}
+.text-field:focused, .password-field:focused { -fx-border-color: -cs-primary; -fx-border-width: 2; -fx-padding: 0 11 0 11; }
+.text-field:disabled, .password-field:disabled { -fx-opacity: 1; -fx-background-color: -cs-surface-sunken; -fx-text-fill: -cs-text-disabled; }
+.text-field.has-trailing-icon, .password-field.has-trailing-icon { -fx-padding: 0 40 0 12; }
+.text-field.has-trailing-icon:focused, .password-field.has-trailing-icon:focused { -fx-padding: 0 39 0 11; }
+
+/* ---------- Form field ---------- */
+.form-label { -fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: -cs-text; }
+.form-error { -fx-text-fill: -cs-danger; }
+.form-error-row .ikonli-font-icon { -fx-icon-color: -cs-danger; }
+.form-field.has-error .text-field, .form-field.has-error .password-field { -fx-border-color: -cs-danger; }
+
+/* ---------- Toast ---------- */
+.toast {
+    -fx-background-color: -cs-surface;
+    -fx-background-radius: 8;
+    -fx-border-color: -cs-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 10 16 10 12;
+    -fx-effect: dropshadow(gaussian, rgba(16, 24, 40, 0.12), 12, 0, 0, 4);
+}
+.toast .label { -fx-text-fill: -cs-text; }
+.toast-info .ikonli-font-icon    { -fx-icon-color: -cs-primary; }
+.toast-success .ikonli-font-icon { -fx-icon-color: -cs-success; }
+.toast-warning .ikonli-font-icon { -fx-icon-color: -cs-warning; }
+.toast-error .ikonli-font-icon   { -fx-icon-color: -cs-danger; }
+.toast-success { -fx-border-color: -cs-success; }
+.toast-warning { -fx-border-color: -cs-warning; }
+.toast-error   { -fx-border-color: -cs-danger; }
+
+/* ---------- Hyperlink ---------- */
+.hyperlink {
+    -fx-text-fill: -cs-primary;
+    -fx-underline: false;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-padding: 4 4 4 4;
+    -fx-min-height: 32px;
+    -fx-cursor: hand;
+}
+.hyperlink:hover { -fx-underline: true; -fx-text-fill: -cs-primary-hover; }
+.hyperlink:visited { -fx-text-fill: -cs-primary; }
+.hyperlink:focused { -fx-border-color: -cs-primary; }
+.hyperlink:disabled { -fx-opacity: 1; -fx-text-fill: -cs-text-disabled; }
+
+/* ---------- Segmented tabs: a segment that cannot be chosen ---------- */
+.segmented-tabs .segment:disabled { -fx-background-color: transparent; -fx-cursor: default; }
+.segmented-tabs .segment:disabled .label { -fx-text-fill: -cs-text-disabled; }

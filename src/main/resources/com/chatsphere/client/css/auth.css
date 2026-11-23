@@ -1,0 +1,20 @@
+/* Auth screen. Tokens only. */
+.auth-view { -fx-background-color: -cs-surface; }
+
+/* brand panel (same ink in both themes) */
+.auth-brand { -fx-background-color: -cs-brand-ink; }
+.auth-brand-wordmark, .auth-brand-statement { -fx-text-fill: white; }
+.auth-brand-fact { -fx-text-fill: rgba(255, 255, 255, 0.7); }
+
+/* form panel */
+.auth-form-panel { -fx-background-color: -cs-surface; }
+.auth-scroll { -fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; }
+.auth-scroll > .viewport { -fx-background-color: transparent; }
+.auth-form .disclosure { -fx-padding: 0 8 0 4; }
+
+/* connection chip */
+.auth-chip { -fx-background-color: -cs-surface; -fx-padding: 0; }
+.chip-dot { -fx-fill: -cs-text-tertiary; }
+.chip-dot.connected { -fx-fill: -cs-success; }
+.chip-dot.connecting { -fx-fill: -cs-text-tertiary; }
+.chip-dot.offline { -fx-fill: -cs-danger; }

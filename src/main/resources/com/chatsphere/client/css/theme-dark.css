@@ -1,0 +1,42 @@
+/* Colour tokens. The ONLY place hex colours may appear. Names are final (contract C2). */
+.root {
+    -cs-bg-app: #0E1217;
+    -cs-surface: #151A21;
+    -cs-surface-sunken: #0A0D11;
+    -cs-surface-hover: #1B2129;
+    -cs-border: #262D37;
+    -cs-border-strong: #3A4452;
+    -cs-text: #E6EAF0;
+    -cs-text-secondary: #A3ADBA;
+    -cs-text-tertiary: #8A939F;
+    -cs-text-disabled: #566070;
+    -cs-primary: #5B93F0;
+    -cs-primary-hover: #7AA8F4;
+    -cs-primary-pressed: #4A82DE;
+    -cs-primary-subtle: #1A2A47;
+    -cs-on-primary: #0B1220;
+    -cs-brand-ink: #0F1B2D;
+    -cs-secondary: #E6EAF0;
+    -cs-accent: #E8913A;
+    -cs-accent-subtle: #3A2615;
+    -cs-on-accent: #1A0E03;
+    -cs-success: #3DBE7A;
+    -cs-warning: #E0B04A;
+    -cs-danger: #E5646A;
+    -cs-danger-subtle: #3A1A1C;
+    -cs-bubble-out-bg: #1B2B49;
+    -cs-bubble-out-text: #DCE8FC;
+    -cs-bubble-in-bg: #1B2129;
+    -cs-tick-read: #5B93F0;
+    -cs-highlight: #5A4A12;
+
+    /* Avatar palette (same in both themes), picked by floorMod(username.hashCode(), 8) */
+    -cs-avatar-0: #5B6C8F;
+    -cs-avatar-1: #7A5C8E;
+    -cs-avatar-2: #49807A;
+    -cs-avatar-3: #8A6F4F;
+    -cs-avatar-4: #8F5B6E;
+    -cs-avatar-5: #6B6FA8;
+    -cs-avatar-6: #5E7E5E;
+    -cs-avatar-7: #8A5F3F;
+}

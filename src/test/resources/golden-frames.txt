@@ -1,0 +1,23 @@
+# GOLDEN FRAMES (contract v1.0). <T> stands for one TAB character. A backslash-n in a text field is the two characters \ and n.
+# Person 1 tests that Frames/SocketChatClient build the client frames below byte for byte.
+# Person 1 tests that the server builds the server frames below; Person 1's ProtocolParser must turn each server frame into the right result.
+# ---- client -> server ----
+LOGIN<T>1<T>demo<T>password1
+MSG<T>7<T>general<T>line one\nline two
+SEARCH<T>9<T>build<T><T>0<T>0<T>ALL<T><T>
+# ---- server -> client: replies ----
+LOGIN_OK<T>1<T>demo
+ERROR<T>1<T>BAD_CREDENTIALS
+SENT<T>7<T>42<T>1767225600000
+ROOM_LIST_RESULT<T>3<T>MINE<T>2<T>general<T>4<T>1<T>2<T>Welcome to ChatSphere<T>1767225600000<T>random<T>2<T>1<T>0<T><T>0
+USER_LIST_RESULT<T>4<T>2<T>alice<T>1<T>1<T>Hey, are you free?<T>1767225600000<T>bob<T>0<T>0<T><T>0
+HISTORY_RESULT<T>5<T>ROOM<T>general<T>1<T>38<T>2<T>38<T>alice<T>1767225600000<T>SENT<T>hello<T>39<T>bob<T>1767225660000<T>SENT<T>hi\nthere
+SEARCH_RESULT<T>9<T>1<T>38<T>ROOM<T>general<T>alice<T>1767225600000<T>hello
+# ---- server -> client: pushes ----
+MSG_PUSH<T>general<T>52<T>bob<T>1767225710000<T>hi all
+PM_PUSH<T>51<T>alice<T>1767225700000<T>psst
+USER_STATUS<T>alice<T>1
+TYPING_PUSH<T>PRIVATE<T>alice<T>alice
+ACK_PUSH<T>DELIVERED<T>bob<T>2<T>51<T>52
+ROOM_MEMBERS_CHANGED<T>general<T>carol<T>JOINED
+SESSION_REPLACED

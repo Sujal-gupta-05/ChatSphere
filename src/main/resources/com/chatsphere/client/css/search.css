@@ -1,0 +1,52 @@
+/* Search panel. Tokens only. Loaded by SearchPanel on its own root. */
+.search-panel { -fx-background-color: -cs-surface; }
+
+/* combo box and date picker styled like the text fields */
+.search-panel .combo-box-base, .search-panel .date-picker {
+    -fx-background-color: -cs-surface;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-border-color: -cs-border-strong;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-min-height: 36px;
+    -fx-pref-height: 36px;
+}
+.search-panel .combo-box-base:focused, .search-panel .date-picker:focused { -fx-border-color: -cs-primary; -fx-border-width: 2; }
+.search-panel .combo-box-base > .list-cell { -fx-text-fill: -cs-text; -fx-background-color: transparent; -fx-padding: 0 8 0 12; }
+.search-panel .combo-box-base > .arrow-button, .search-panel .date-picker > .arrow-button { -fx-background-color: transparent; -fx-background-insets: 0; }
+.search-panel .combo-box-base > .arrow-button > .arrow { -fx-background-color: -cs-text-secondary; }
+.search-panel .date-picker > .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-min-height: 0;
+    -fx-pref-height: -1;
+    -fx-padding: 0 4 0 12;
+    -fx-font-size: 13px;
+}
+.search-panel .date-picker > .arrow-button > .arrow-button-icon { -fx-background-color: -cs-text-secondary; }
+
+/* results */
+.search-list { -fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; }
+.search-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 10 16 10 16;
+    -fx-border-color: transparent transparent -cs-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: -cs-text;
+}
+.search-list .list-cell:empty { -fx-border-color: transparent; }
+.search-list .list-cell:filled:hover { -fx-background-color: -cs-surface-hover; }
+.search-list .list-cell:filled:selected, .search-list .list-cell:filled:selected:focused { -fx-background-color: -cs-primary-subtle; }
+
+.search-snippet { -fx-fill: -cs-text; -fx-font-size: 13px; }
+.search-mark {
+    -fx-background-color: -cs-highlight;
+    -fx-background-radius: 2;
+    -fx-text-fill: -cs-text;
+    -fx-font-size: 13px;
+    -fx-padding: 0;
+}
+
+/* keyboard focus on a result row: full 2px ring (the row normally has only a bottom hairline) */
+.search-list .list-cell:filled:focused { -fx-border-color: -cs-primary; -fx-border-width: 2; -fx-padding: 9 15 9 15; }
