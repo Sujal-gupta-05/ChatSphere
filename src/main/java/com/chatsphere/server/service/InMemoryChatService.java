@@ -81,6 +81,7 @@ public class InMemoryChatService implements ChatService {
         users.put(username, password);
     }
     @Override public synchronized void verifyLogin(String username, String password) {
+        if (username == null || password == null) throw new ChatException(ErrorCode.BAD_CREDENTIALS);
         String p = users.get(username);
         if (p == null || !p.equals(password)) throw new ChatException(ErrorCode.BAD_CREDENTIALS);
     }
@@ -163,13 +164,15 @@ public class InMemoryChatService implements ChatService {
     }
     @Override public synchronized MessageRecord savePrivateMessage(String sender, String recipient, String text) {
         if (!Validation.isValidMessage(text)) throw new ChatException(ErrorCode.INVALID_MESSAGE);
-        if (sender.equals(recipient)) throw new ChatException(ErrorCode.INVALID_TARGET);
+        if (sender != null && sender.equals(recipient)) throw new ChatException(ErrorCode.INVALID_TARGET);
+        needUser(sender);
         needUser(recipient);
         Msg m = new Msg(nextId++, TargetType.PRIVATE, null, sender, recipient, System.currentTimeMillis(), text);
         msgs.add(m);
         return rec(m);
     }
     @Override public synchronized void markDelivered(List<Long> ids) {
+        if (ids == null || ids.isEmpty()) return;
         Set<Long> set = new HashSet<>(ids);
         for (Msg m : msgs)
             if (m.type == TargetType.PRIVATE && set.contains(m.id) && m.status == DeliveryStatus.SENT)
@@ -186,6 +189,8 @@ public class InMemoryChatService implements ChatService {
         return out;
     }
     @Override public synchronized List<Long> markPrivateRead(String reader, String peer, long upToId) {
+        needUser(peer);
+        if (!users.containsKey(reader)) return List.of();
         List<Long> changed = new ArrayList<>();
         for (Msg m : msgs) {
             if (m.type == TargetType.PRIVATE && m.sender.equals(peer) && m.recipient.equals(reader)
@@ -198,7 +203,14 @@ public class InMemoryChatService implements ChatService {
     }
     @Override public synchronized void markRoomRead(String user, String room, long upToId) {
         Room r = needMemberRoom(user, room);
-        r.lastRead.merge(user, upToId, Math::max);
+        long newest = 0;
+        for (Msg m : msgs) {
+            if (m.type == TargetType.ROOM && room.equals(m.room) && m.id > newest) {
+                newest = m.id;
+            }
+        }
+        long target = Math.min(upToId, newest);
+        r.lastRead.merge(user, target, Math::max);
     }
 
     // ---------- history & search ----------
@@ -225,8 +237,11 @@ public class InMemoryChatService implements ChatService {
         return new HistoryPage(out, from > 0, firstUnread(user, type, target, conv));
     }
     @Override public synchronized List<SearchHit> search(String user, SearchQuery q) {
-        String kw = q.keyword() == null ? "" : q.keyword().trim().toLowerCase();
-        if (kw.isEmpty()) throw new ChatException(ErrorCode.BAD_REQUEST, "keyword required");
+        if (q == null || q.keyword() == null || q.keyword().isBlank()) throw new ChatException(ErrorCode.BAD_REQUEST);
+        if (q.currentOnly() && (q.targetType() == null || q.target() == null || q.target().isBlank())) {
+            throw new ChatException(ErrorCode.BAD_REQUEST);
+        }
+        String kw = q.keyword().trim().toLowerCase();
         List<SearchHit> hits = new ArrayList<>();
         for (int i = msgs.size() - 1; i >= 0 && hits.size() < Limits.SEARCH_MAX_RESULTS; i--) {
             Msg m = msgs.get(i);

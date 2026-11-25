@@ -39,9 +39,23 @@ public class FakeChatClient implements ChatClient {
     private volatile String me;
     private volatile ScheduledFuture<?> botLoop;
 
+    private final boolean sync;
+
     public FakeChatClient(Executor uiExecutor) {
         this.ui = uiExecutor;
+        this.sync = isSyncExecutor(uiExecutor);
         seed();
+    }
+
+    private static boolean isSyncExecutor(Executor ex) {
+        if (ex == null) return false;
+        boolean[] called = new boolean[1];
+        try {
+            ex.execute(() -> called[0] = true);
+        } catch (Throwable t) {
+            return false;
+        }
+        return called[0];
     }
 
     // ---------------------------------------------------------------- seed data
@@ -78,7 +92,7 @@ public class FakeChatClient implements ChatClient {
     }
     private <T> CompletableFuture<T> call(boolean needsLogin, Supplier<T> action) {
         CompletableFuture<T> f = new CompletableFuture<>();
-        sched.schedule(() -> {
+        Runnable task = () -> {
             try {
                 if (state != ConnectionState.CONNECTED) throw new ChatException(ErrorCode.NOT_CONNECTED);
                 if (needsLogin && me == null) throw new ChatException(ErrorCode.NOT_LOGGED_IN);
@@ -89,12 +103,22 @@ public class FakeChatClient implements ChatClient {
             } catch (RuntimeException ex) {
                 ui.execute(() -> f.completeExceptionally(new ChatException(ErrorCode.SERVER_ERROR, ex.toString())));
             }
-        }, LATENCY_MS, TimeUnit.MILLISECONDS);
+        };
+        if (sync) {
+            task.run();
+        } else {
+            sched.schedule(task, LATENCY_MS, TimeUnit.MILLISECONDS);
+        }
         return f;
     }
 
     // ---------------------------------------------------------------- connection
     @Override public void connect(String host, int port) {
+        if (sync) {
+            if ("unreachable".equals(host)) setState(ConnectionState.OFFLINE, 0, "Can't reach server");
+            else setState(ConnectionState.CONNECTED, 0, "");
+            return;
+        }
         setState(ConnectionState.CONNECTING, 0, "");
         later(400, () -> {
             if ("unreachable".equals(host)) setState(ConnectionState.OFFLINE, 0, "Can't reach server");
@@ -125,7 +149,7 @@ public class FakeChatClient implements ChatClient {
         return call(false, () -> {
             service.verifyLogin(username, p);
             me = username;
-            startBots();
+            if (!sync) startBots();
             return null;
         });
     }

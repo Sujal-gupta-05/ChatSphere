@@ -1,0 +1,475 @@
+.workspace-root {
+    -fx-background-color: -cs-bg-app;
+}
+
+.sidebar {
+    -fx-background-color: -cs-surface;
+    -fx-border-color: transparent -cs-border transparent transparent;
+    -fx-border-width: 0 1px 0 0;
+    -fx-pref-width: 300px;
+    -fx-min-width: 300px;
+    -fx-max-width: 300px;
+}
+
+.sidebar-header {
+    -fx-padding: 12px 16px;
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-alignment: center-left;
+    -fx-border-color: transparent transparent -cs-border transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.sidebar-header .user-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text;
+}
+
+.sidebar-header .user-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.sidebar-search-btn {
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 12px;
+    -fx-min-height: 36px;
+    -fx-pref-height: 36px;
+    -fx-cursor: hand;
+    -fx-border-color: -cs-border;
+    -fx-border-radius: 4px;
+    -fx-border-width: 1px;
+}
+
+.sidebar-search-btn:hover {
+    -fx-background-color: -cs-surface-hover;
+}
+
+.sidebar-search-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.sidebar-search-shortcut {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-tertiary;
+    -fx-background-color: -cs-surface;
+    -fx-background-radius: 3px;
+    -fx-padding: 1px 4px;
+    -fx-border-color: -cs-border;
+    -fx-border-radius: 3px;
+    -fx-border-width: 1px;
+}
+
+.sidebar-action-bar {
+    -fx-padding: 8px 16px;
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+
+.ghost-action-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -cs-text-secondary;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-padding: 4px 8px;
+    -fx-background-radius: 4px;
+}
+
+.ghost-action-btn:hover {
+    -fx-background-color: -cs-surface-hover;
+    -fx-text-fill: -cs-text;
+}
+
+.conversation-row {
+    -fx-pref-height: 56px;
+    -fx-min-height: 56px;
+    -fx-padding: 8px 16px;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-width: 0 0 0 2px;
+}
+
+.conversation-row:hover {
+    -fx-background-color: -cs-surface-hover;
+}
+
+.conversation-row.selected {
+    -fx-background-color: -cs-primary-subtle;
+    -fx-border-color: transparent transparent transparent -cs-primary;
+}
+
+.conversation-row .row-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text;
+}
+
+.conversation-row .row-preview {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-secondary;
+}
+
+.conversation-row.unread .row-preview {
+    -fx-text-fill: -cs-text;
+    -fx-font-weight: bold;
+}
+
+.conversation-row .row-time {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.room-tile {
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 4px;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-alignment: center;
+}
+
+.room-tile-large {
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 6px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;
+    -fx-alignment: center;
+}
+
+.sidebar-footer {
+    -fx-padding: 8px 16px;
+    -fx-min-height: 36px;
+    -fx-pref-height: 36px;
+    -fx-border-color: -cs-border transparent transparent transparent;
+    -fx-border-width: 1px 0 0 0;
+    -fx-alignment: center-left;
+}
+
+.sidebar-footer .status-text {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-secondary;
+}
+
+.conversation-pane {
+    -fx-background-color: -cs-surface;
+}
+
+.conversation-header {
+    -fx-padding: 12px 20px;
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-border-color: transparent transparent -cs-border transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-alignment: center-left;
+}
+
+.conversation-header .header-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text;
+}
+
+.conversation-header .header-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-secondary;
+}
+
+.message-list-scroll {
+    -fx-background-color: transparent;
+}
+
+.message-column {
+    -fx-padding: 16px;
+    -fx-spacing: 2px;
+    -fx-max-width: 760px;
+}
+
+.message-bubble-row {
+    -fx-spacing: 8px;
+    -fx-alignment: top-left;
+}
+
+.message-bubble-row.own {
+    -fx-alignment: top-right;
+}
+
+.message-bubble {
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 8px;
+    -fx-max-width: 520px;
+}
+
+.message-bubble.incoming {
+    -fx-background-color: -cs-bubble-in-bg;
+    -fx-border-color: -cs-border;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-background-radius: 4px 8px 8px 8px;
+}
+
+.message-bubble.outgoing {
+    -fx-background-color: -cs-bubble-out-bg;
+    -fx-background-radius: 8px 4px 8px 8px;
+}
+
+.message-text {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+
+.message-bubble.incoming .message-text {
+    -fx-text-fill: -cs-text;
+}
+
+.message-bubble.outgoing .message-text {
+    -fx-text-fill: -cs-bubble-out-text;
+}
+
+.sender-name-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text-secondary;
+    -fx-padding: 4px 0 2px 0;
+}
+
+.message-meta-row {
+    -fx-spacing: 4px;
+    -fx-alignment: center-right;
+    -fx-padding: 2px 0 0 4px;
+}
+
+.message-time-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.bubble-failed-box {
+    -fx-spacing: 4px;
+    -fx-alignment: center-left;
+    -fx-padding: 2px 0 0 0;
+}
+
+.bubble-failed-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-danger;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.day-separator {
+    -fx-alignment: center;
+    -fx-padding: 16px 0;
+}
+
+.day-separator-line {
+    -fx-background-color: -cs-border;
+    -fx-pref-height: 1px;
+}
+
+.day-separator-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-tertiary;
+    -fx-padding: 0 12px;
+}
+
+.unread-divider {
+    -fx-alignment: center;
+    -fx-padding: 12px 0;
+}
+
+.unread-divider-line {
+    -fx-background-color: -cs-accent;
+    -fx-pref-height: 1px;
+}
+
+.unread-divider-pill {
+    -fx-background-color: -cs-accent-subtle;
+    -fx-background-radius: 12px;
+    -fx-padding: 2px 12px;
+}
+
+.unread-divider-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-accent;
+}
+
+.system-line {
+    -fx-alignment: center;
+    -fx-padding: 6px 0;
+}
+
+.system-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.load-earlier-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -cs-primary;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+}
+
+.load-earlier-btn:hover {
+    -fx-underline: true;
+}
+
+.new-messages-pill {
+    -fx-background-color: -cs-primary;
+    -fx-background-radius: 16px;
+    -fx-padding: 6px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(16,24,40,0.16), 8, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.new-messages-pill-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-on-primary;
+}
+
+.typing-strip {
+    -fx-min-height: 20px;
+    -fx-pref-height: 20px;
+    -fx-max-height: 20px;
+    -fx-padding: 0 20px;
+    -fx-alignment: center-left;
+}
+
+.typing-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-secondary;
+    -fx-font-style: italic;
+}
+
+.composer {
+    -fx-padding: 12px 20px;
+    -fx-border-color: -cs-border transparent transparent transparent;
+    -fx-border-width: 1px 0 0 0;
+    -fx-background-color: -cs-surface;
+    -fx-spacing: 8px;
+}
+
+.composer-input-box {
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 6px;
+    -fx-border-color: -cs-border-strong;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 12px;
+    -fx-alignment: bottom-right;
+}
+
+.composer-input-box:focused-within {
+    -fx-border-color: -cs-primary;
+}
+
+.composer-textarea {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-wrap-text: true;
+    -fx-pref-height: 38px;
+    -fx-min-height: 38px;
+    -fx-max-height: 140px;
+}
+
+.composer-textarea .content {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.composer-counter {
+    -fx-font-size: 11px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.composer-counter.warning {
+    -fx-text-fill: -cs-danger;
+    -fx-font-weight: bold;
+}
+
+.offline-hint-box {
+    -fx-padding: 4px 8px;
+    -fx-background-color: -cs-surface-sunken;
+    -fx-background-radius: 4px;
+    -fx-alignment: center-left;
+    -fx-spacing: 6px;
+}
+
+.offline-hint-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -cs-text-tertiary;
+}
+
+.details-pane {
+    -fx-pref-width: 280px;
+    -fx-min-width: 280px;
+    -fx-max-width: 280px;
+    -fx-background-color: -cs-surface;
+    -fx-border-color: transparent transparent transparent -cs-border;
+    -fx-border-width: 0 0 0 1px;
+}
+
+.details-header {
+    -fx-padding: 12px 16px;
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-border-color: transparent transparent -cs-border transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-alignment: center-left;
+}
+
+.details-header .details-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text;
+}
+
+.details-content {
+    -fx-padding: 16px;
+    -fx-spacing: 16px;
+}
+
+.member-row {
+    -fx-padding: 6px 0;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+}
+
+.member-name {
+    -fx-font-size: 13px;
+    -fx-text-fill: -cs-text;
+}
+
+.empty-state-pane {
+    -fx-alignment: center;
+    -fx-spacing: 12px;
+    -fx-padding: 40px;
+}
+
+.empty-state-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cs-text;
+}
+
+.empty-state-body {
+    -fx-font-size: 14px;
+    -fx-text-fill: -cs-text-secondary;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.highlight-flash {
+    -fx-background-color: -cs-highlight !important;
+}

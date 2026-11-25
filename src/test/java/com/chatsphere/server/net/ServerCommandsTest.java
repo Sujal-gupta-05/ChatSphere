@@ -452,7 +452,11 @@ class ServerCommandsTest {
         b.send(Protocol.ROOM_JOIN, "1", "general"); b.nextPipe(); b.nextPipe(); a.nextPipe();
         // bobby never reads again; alice floods the room with big messages
         String big = "z".repeat(1900);
-        for (int i = 0; i < 3000; i++) { a.send(Protocol.MSG, String.valueOf(i + 10), "general", big); a.next(); }
+        for (int i = 0; i < 3000; i++) {
+            a.send(Protocol.MSG, String.valueOf(i + 10), "general", big);
+            List<String> f = a.next();
+            if (f.get(0).equals(Protocol.USER_STATUS)) a.next();
+        }
         a.send(Protocol.PING, "9999");
         assertEquals("PONG|9999", a.nextPipe());
     }
